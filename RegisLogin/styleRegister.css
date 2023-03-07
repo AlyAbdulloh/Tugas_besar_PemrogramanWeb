@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Figtree:wght@300&family=Inconsolata&family=Quicksand&family=Staatliches&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.container{
+    width: 500px;
+    margin: 100px auto;
+    padding: 25px;
+    padding-bottom: 10px;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.regis{
+    width: 100%;
+    height: 50px;
+    display: table;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.sign{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 50%;
+    background: #2ec4b6;
+    color: white;
+
+
+
+}
+
+.hide{
+    display: none;
+}
+
+.login{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 50%;
+    background: #8d99ae;
+    color: white;
+}
+
+#log .sign{
+    background: #8d99ae;
+}
+
+#log .login{
+    background: #2ec4b6;
+}
+
+.name{
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+
+}
+
+input[type="text"]{
+    outline: none;
+    flex-basis: 50%;
+    font-size: 15px;
+    padding: 5px;
+}
+
+.email {
+    margin-top: 20px;
+}
+
+input[type="email"]{
+    outline: none;
+    font-size: 15px;
+    padding: 5px;
+    width: 100%;
+}
+
+.pw {
+    margin-top: 20px;
+}
+
+input[type="password"]{
+    outline: none;
+    font-size: 15px;
+    padding: 5px;
+    width: 100%;
+}
+
+.button {
+    margin: 20px auto;
+    text-align: center;
+}
+
+input[type="submit"]{
+    outline: none;
+    font-size: 15px;
+    padding: 5px;
+    width: 50%;
+    cursor: default;
+    background: #2ec4b6;
+    color: white;
+    font-weight: bold;
+    border: none;
+    height: 40px;
+    border-radius: 20px;
+    letter-spacing: 5px;
+}
+
+input[type="submit"]:hover{
+    background: #2ec4b6;
+    color: #333;
+}
+
+.type{
+    margin-top: 20px;
+}
+
+select{
+    width: 90px;
+    padding: 5px;
+    font-size: 18px;
+    outline: none;
+}
+
+#btnl{
+    cursor: pointer;
+}
+
+
+.username{
+    margin-top: 20px;
+}
+
+.username input{
+    width: 100%;
+}
+
+.confirmpw{
+    padding-top: 20px;
+    position: relative;
+}
+
+/* pw */
+.validation {
+    width: 100%;
+    margin-top: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    display: none;
+    
+}
+
+.validation ul{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.validation ul li{
+    position: relative;
+    list-style: none;
+    transition: 0.5s;
+    color: red;
+}
+
+.validation ul li::before
+{
+    content: '\21';
+    width: 20px;
+    display: inline-flex;
+    height: 10px;
+    font-family: fontAwesome;
+
+}
+
+.validation ul li.valid
+{
+    color: #0f0;
+}
+
+.validation ul li.valid::before
+{
+    content: '\f00c';
+    color: #0f0;
+}
+
+#ket{
+    color: red;
+    font-size: 12px;
+    display: none;
+    position: absolute;
+    top: 5px;
+}
+
+.pw {
+    display: flex;
+    /* border: 1px solid #333; */
+    justify-content: space-between;
+}
+
+.pw #icon {
+    height: 25px;
+    width: 25px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    margin-right: 5px;
+}
+
+.pw #icon::before
+{
+    content: '\f070';
+    font-family: fontAwesome;
+}
+
+.pw #icon.hidee::before
+{
+    content: '\f06e';
+    font-family: fontAwesome;
+}
+
+.pwl{
+    border: 1px solid #333;
+}
+
+.pwll{
+    border: none;
+    flex-basis: 90%;
+}
+
+input[name="pswl"]{
+    flex-basis: 90%;
+}
+
+.test{
+    margin-top: 10px;
+}
