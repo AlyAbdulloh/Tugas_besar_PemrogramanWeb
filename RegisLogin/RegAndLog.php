@@ -1,66 +1,64 @@
 <?php
-    include '../koneksi.php';
-    session_start();
+include '../koneksi.php';
+session_start();
 
-    if(isset($_POST['register'])){
-        $firstname = mysqli_real_escape_string($connect, $_POST['firstname']);
-        $lastname = mysqli_real_escape_string($connect, $_POST['lastname']);
-        $email = mysqli_real_escape_string($connect, $_POST['email']);
-        $username = mysqli_real_escape_string($connect, $_POST['username']);
-        $pass = $_POST['psw'];
-        $status = '2';
+if (isset($_POST['register'])) {
+    $firstname = mysqli_real_escape_string($connect, $_POST['firstname']);
+    $lastname = mysqli_real_escape_string($connect, $_POST['lastname']);
+    $email = mysqli_real_escape_string($connect, $_POST['email']);
+    $username = mysqli_real_escape_string($connect, $_POST['username']);
+    $pass = $_POST['psw'];
+    $status = '2';
 
-        $select = "SELECT * FROM user WHERE username = '$username'";
+    $select = "SELECT * FROM user WHERE username = '$username'";
 
-        $result = mysqli_query($connect, $select);
+    $result = mysqli_query($connect, $select);
 
-        if(mysqli_num_rows($result) > 0){
-            // $error[] = 'Username sudah ada!';
-            echo "
+    if (mysqli_num_rows($result) > 0) {
+        // $error[] = 'Username sudah ada!';
+        echo "
                     <script>
                         alert('Username sudah ada');
                     </script>
                 ";
-
-        }else{
-            $insert = "INSERT INTO user(firstname, lastname, email, username, password, status) VALUES('$firstname', '$lastname', '$email', '$username', '$pass', '$status')";
-            mysqli_query($connect, $insert);
-            echo "
+    } else {
+        $insert = "INSERT INTO user(firstname, lastname, email, username, password, status) VALUES('$firstname', '$lastname', '$email', '$username', '$pass', '$status')";
+        mysqli_query($connect, $insert);
+        echo "
                     <script>
                         alert('Register berhasil..');
                     </script>
-                "; 
+                ";
+    }
+};
+
+if (isset($_POST['login'])) {
+    $usernamelog = $_POST['username'];
+    $pw = $_POST['pswl'];
+
+    $sql = "SELECT * FROM user WHERE username = '$usernamelog' && password = '$pw'";
+    $hasil = mysqli_query($connect, $sql);
+
+    if (mysqli_num_rows($hasil) > 0) {
+        $row = mysqli_fetch_array($hasil);
+
+        if ($row['status'] == 1) {
+            $_SESSION['admin_name'] = $row['firstname'];
+            $_SESSION['id_admin'] = $row['id_user'];
+            header('location:../Admin/Home.php');
+        } else if ($row['status'] == 2) {
+            $_SESSION['user_name'] = $row['firstname'];
+            $_SESSION['id_user'] = $row['id_user'];
+            header('location:../index.php');
         }
-
-    };
-
-    if(isset($_POST['login'])){
-        $usernamelog = $_POST['username'];
-        $pw = $_POST['pswl'];
-
-        $sql = "SELECT * FROM user WHERE username = '$usernamelog' && password = '$pw'";
-        $hasil = mysqli_query($connect, $sql);
-
-        if(mysqli_num_rows($hasil) > 0){
-            $row = mysqli_fetch_array($hasil);
-
-            if($row['status'] == 1){
-                $_SESSION['admin_name'] = $row['firstname'];
-                $_SESSION['id_admin'] = $row['id_user'];
-                header('location:../Admin/Home.php');
-            }else if($row['status'] == 2){
-                $_SESSION['user_name'] = $row['firstname'];
-                $_SESSION['id_user'] = $row['id_user'];
-                header('location:../index.php');
-            }
-        }else{
-            echo "
+    } else {
+        echo "
                 <script>
                     alert('Email atau Password salah!');
                 </script>
             ";
-        }
     }
+}
 ?>
 
 
@@ -77,11 +75,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styleRegister.css">
     <style>
-        body{
+        body {
             background: #f5f5f5;
         }
 
-        .container{
+        .container {
             background: white;
         }
     </style>
@@ -92,7 +90,7 @@
         <div class="container" id="sig">
             <form action="" method="post">
                 <div class="regis">
-                    <div class="sign" style="bacground: #2ec4b6;">Sign Up</div>
+                    <div class="sign" style="background: #2ec4b6;">Sign Up</div>
                     <div class="login">Log in</div>
                 </div>
                 <div class="name">
@@ -128,7 +126,7 @@
         </div>
         <div class="container hide" id="log">
             <form action="" method="post">
-                <div class="regis"> 
+                <div class="regis">
                     <div class="signn sign">Sign Up</div>
                     <div class="login">Log in</div>
                 </div>
